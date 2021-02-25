@@ -1,4 +1,6 @@
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+# terraform-aws-ecs-metric-alarms
+
 ## Usage
 
 Creates metric alarms for use with a ECS Service

@@ -1,4 +1,6 @@
 /**
+ * # terraform-aws-ecs-metric-alarms
+ *
  * ## Usage
  *
  * Creates metric alarms for use with a ECS Service
@@ -75,7 +77,7 @@ resource "aws_cloudwatch_metric_alarm" "mem" {
 
   comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "1"
-  metric_name         = "MEMUtiliziation"
+  metric_name         = "MemoryUtiliziation"
   namespace           = "AWS/ECS"
   period              = "300"
   statistic           = "Average"
