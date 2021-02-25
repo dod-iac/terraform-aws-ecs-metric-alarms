@@ -44,13 +44,24 @@ variable "actions_insufficient_data" {
   default     = []
 }
 
+variable "ecs_cluster_name" {
+  type        = string
+  description = "The ECS Cluster name for use with CloudWatch Metrics."
+}
+
 variable "ecs_service_name" {
   type        = string
   description = "The ECS Service name for use with CloudWatch Metrics."
 }
 
-variable "threshold" {
+variable "threshold_cpu" {
   type        = string
-  description = "The threshold for the metric alarm"
-  default     = "99.5"
+  description = "The threshold for the cpu metric alarm"
+  default     = "80.0"
+}
+
+variable "threshold_mem" {
+  type        = string
+  description = "The threshold for the mem metric alarm"
+  default     = "80.0"
 }

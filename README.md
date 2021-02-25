@@ -66,12 +66,14 @@ No Modules.
 | actions\_enabled | Enable the actions. Set to false to temporarily disable actions. | `bool` | `true` | no |
 | actions\_insufficient\_data | List of insufficient data actions to take | `list(string)` | `[]` | no |
 | actions\_ok | List of ok actions to take | `list(string)` | `[]` | no |
+| ecs\_cluster\_name | The ECS Cluster name for use with CloudWatch Metrics. | `string` | n/a | yes |
 | ecs\_service\_name | The ECS Service name for use with CloudWatch Metrics. | `string` | n/a | yes |
 | enable\_metric\_alarm | Enable the metric alarm | `bool` | `true` | no |
 | environment | Environment tag, e.g prod. | `string` | n/a | yes |
 | name | The service name. | `string` | n/a | yes |
 | tags | Tags applied to the metric alarms. | `map(string)` | `{}` | no |
-| threshold | The threshold for the metric alarm | `string` | `"99.5"` | no |
+| threshold\_cpu | The threshold for the cpu metric alarm | `string` | `"80.0"` | no |
+| threshold\_mem | The threshold for the mem metric alarm | `string` | `"80.0"` | no |
 
 ## Outputs
 

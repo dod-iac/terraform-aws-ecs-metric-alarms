@@ -46,16 +46,17 @@ resource "aws_cloudwatch_metric_alarm" "cpu" {
   ok_actions                = var.actions_ok
   insufficient_data_actions = var.actions_insufficient_data
 
-  comparison_operator = "LessThanThreshold"
+  comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "1"
-  metricName          = "CPUUtiliziation"
+  metric_name         = "CPUUtiliziation"
   namespace           = "AWS/ECS"
   period              = "300"
   statistic           = "Average"
-  threshold           = var.threshold
+  threshold           = var.threshold_cpu
   treat_missing_data  = "notBreaching"
 
   dimensions = {
+    ClusterName = var.ecs_cluster_name
     ServiceName = var.ecs_service_name
   }
 
@@ -72,16 +73,17 @@ resource "aws_cloudwatch_metric_alarm" "mem" {
   ok_actions                = var.actions_ok
   insufficient_data_actions = var.actions_insufficient_data
 
-  comparison_operator = "LessThanThreshold"
+  comparison_operator = "GreaterThanThreshold"
   evaluation_periods  = "1"
-  metricName          = "MEMUtiliziation"
+  metric_name         = "MEMUtiliziation"
   namespace           = "AWS/ECS"
   period              = "300"
   statistic           = "Average"
-  threshold           = var.threshold
+  threshold           = var.threshold_mem
   treat_missing_data  = "notBreaching"
 
   dimensions = {
+    ClusterName = var.ecs_cluster_name
     ServiceName = var.ecs_service_name
   }
 
