@@ -1,7 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Don't use "set -e" because markdown needs to keep going on all files
-set -u -o pipefail
+set -eu -o pipefail
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 readonly DIR
@@ -11,10 +10,10 @@ if ! command -v terraform-docs > /dev/null; then
   exit 1
 fi
 
+pushd "${DIR}/.." > /dev/null
 terraform-docs markdown . > README.md
-{
-  echo "<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->"
-  cat README.md
-  echo "<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->"
-} >> TMP_README.md
+echo "<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->" >> TMP_README.md
+cat README.md >> TMP_README.md
+echo "<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->" >> TMP_README.md
 mv TMP_README.md README.md
+popd  > /dev/null
