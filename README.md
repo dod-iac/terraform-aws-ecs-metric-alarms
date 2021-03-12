@@ -41,7 +41,7 @@ This project constitutes a work of the United States Government and is not subje
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.13.0 |
+| terraform | >= 0.13 |
 | aws | ~> 3.0 |
 
 ## Providers
