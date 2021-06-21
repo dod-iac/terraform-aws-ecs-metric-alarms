@@ -13,7 +13,6 @@
  *   source = "dod-iac/ecs-metric-alarms/aws"
  *
  *   name           = var.application
- *   environment    = var.environment
  *
  *   actions_alarm             = [var.sns_topic_arn]
  *   actions_ok                = [var.sns_topic_arn]
@@ -40,8 +39,8 @@
 
 resource "aws_cloudwatch_metric_alarm" "cpu" {
 
-  alarm_name        = format("%s-%s-cpu", var.name, var.environment)
-  alarm_description = format("CPU Threshold for %s %s", var.name, var.environment)
+  alarm_name        = format("%s-cpu", var.name)
+  alarm_description = format("CPU Threshold for %s", var.name)
 
   actions_enabled           = var.actions_enabled
   alarm_actions             = var.actions_alarm
@@ -67,8 +66,8 @@ resource "aws_cloudwatch_metric_alarm" "cpu" {
 
 resource "aws_cloudwatch_metric_alarm" "mem" {
 
-  alarm_name        = format("%s-%s-mem", var.name, var.environment)
-  alarm_description = format("Memory Threshold for %s %s", var.name, var.environment)
+  alarm_name        = format("%s-mem", var.name)
+  alarm_description = format("Memory Threshold for %s", var.name)
 
   actions_enabled           = var.actions_enabled
   alarm_actions             = var.actions_alarm
